@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Golan Tour | الجولان تور</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root { 
+            --gold-primary: #D4AF37; 
+            --dark-primary: #1a1a1a;
+            --whatsapp-green: #25D366;
+            --soft-gray: #f8f9fa;
+        }
+        
+        html { scroll-behavior: smooth; }
+        body { 
+            font-family: 'Cairo', sans-serif; 
+            background-color: #ffffff; 
+            color: var(--dark-primary); 
+            margin: 0; 
+            padding: 0;
+            text-align: right;
+        }
+
+        /* الهيدر */
+        .navbar-golan { background: #ffffff !important; border-bottom: 3px solid var(--gold-primary); box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        .navbar-brand img { height: 60px; }
+        .nav-link { font-weight: 700; color: var(--dark-primary) !important; margin: 0 10px; transition: 0.3s; }
+        .nav-link:hover { color: var(--gold-primary) !important; }
+        .btn-reserve-top { background: var(--gold-primary); color: white !important; border-radius: 8px; padding: 8px 25px; font-weight: bold; border: none; text-decoration: none; }
+
+        /* الواجهة الكبيرة */
+        .hero-section {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1506929562872-bb421503ef21?auto=format&fit=crop&w=1500&q=80');
+            background-size: cover; background-position: center; height: 85vh; display: flex; align-items: center; justify-content: center; text-align: center; color: white;
+        }
+        .hero-section h1 { font-size: 3.5rem; font-weight: 800; }
+        .hero-section h1 span { color: var(--gold-primary); }
+        .search-box-container { background: white; padding: 20px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); display: inline-flex; align-items: center; gap: 10px; width: 80%; max-width: 800px; margin-top: 30px; flex-direction: row-reverse; }
+        .search-input { border: 1px solid #ddd; padding: 12px; border-radius: 8px; flex-grow: 1; text-align: right; }
+        .btn-search { background: var(--gold-primary); color: white; border: none; padding: 12px 35px; border-radius: 8px; font-weight: bold; }
+
+        /* شريط الخدمات */
+        .services-bar { background: white; padding: 30px 0; border-bottom: 1px solid #eee; }
+        .service-item { text-decoration: none; color: var(--dark-primary); font-weight: 700; display: flex; align-items: center; gap: 8px; justify-content: center; }
+        .service-item i { color: var(--gold-primary); font-size: 1.2rem; }
+
+        /* قسم تعرف علينا */
+        .about-golan { padding: 80px 0; }
+        .about-img-wrapper { position: relative; }
+        .about-img-wrapper img { border-radius: 20px; width: 100%; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+        .discount-badge { position: absolute; bottom: 20px; left: 20px; background: #ff4d4d; color: white; padding: 15px; border-radius: 15px; text-align: center; }
+
+        /* سكشن الشركاء المعتمدون */
+        .partners-section { padding: 60px 0; background-color: #fcfaff; text-align: center; }
+        .partner-badge { background: #e8dff5; color: #6f42c1; padding: 5px 15px; border-radius: 20px; font-size: 0.9rem; font-weight: bold; display: inline-block; margin-bottom: 15px; }
+        .partner-card { background: white; border-radius: 15px; padding: 20px; margin-bottom: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.03); transition: 0.3s; border: 1px solid transparent; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+        .partner-card:hover { transform: translateY(-5px); border-color: var(--gold-primary); }
+        .partner-logo { max-width: 80px; margin-bottom: 15px; filter: grayscale(20%); }
+        .agent-status { font-size: 0.8rem; padding: 4px 12px; border-radius: 8px; font-weight: bold; }
+        .status-red { background: #fff0f0; color: #ff5b5b; }
+        .status-green { background: #e9fbf5; color: #2dce89; }
+        .status-purple { background: #f3f0ff; color: #8a6dff; }
+
+        /* بطاقات الوجهات */
+        .section-header-box { display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; }
+        .destination-card { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: 0.3s; border: 1px solid #eee; height: 100%; }
+        .card-img-wrapper { position: relative; height: 220px; }
+        .card-img-wrapper img { width: 100%; height: 100%; object-fit: cover; }
+        .rating-badge { position: absolute; top: 15px; left: 15px; background: rgba(255,255,255,0.9); padding: 5px 12px; border-radius: 12px; font-weight: bold; font-size: 0.8rem; }
+        .card-footer-box { padding: 15px; display: flex; justify-content: space-between; align-items: center; }
+        .slider-controls { display: flex; gap: 10px; }
+        .control-btn { width: 45px; height: 45px; border-radius: 50%; border: 1px solid #eee; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: 0.3s; }
+        .control-btn:hover { background: var(--gold-primary); color: white; border-color: var(--gold-primary); }
+
+        /* قسم الحجز */
+        .booking-section { padding: 80px 0; background: var(--soft-gray); }
+        .booking-card { background: white; border-radius: 20px; overflow: hidden; display: flex; box-shadow: 0 15px 40px rgba(0,0,0,0.1); flex-direction: row-reverse; }
+        .booking-info { background: var(--dark-primary); color: white; padding: 40px; width: 40%; text-align: right; }
+        .booking-form { padding: 40px; width: 60%; text-align: right; }
+        .btn-whatsapp { background: var(--whatsapp-green); color: white; border: none; width: 100%; padding: 15px; border-radius: 10px; font-weight: bold; font-size: 1.1rem; margin-top: 20px; }
+
+        @media (max-width: 992px) {
+            .booking-card { flex-direction: column; }
+            .booking-info, .booking-form { width: 100%; }
+            .hero-section h1 { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg sticky-top navbar-golan">
+    <div class="container">
+        <a class="navbar-brand" href="#"><img src="WhatsApp Image 2026-03-29 at 09.08.55.jpeg" alt="Golan Tour"></a>
+        <div class="d-flex align-items-center gap-3">
+            <div class="d-none d-lg-block">
+                <a href="#" class="nav-link d-inline">الرئيسية</a>
+                <a href="#popular" class="nav-link d-inline">الوجهات</a>
+                <a href="#about" class="nav-link d-inline">من نحن</a>
+                <a href="#booking-target" class="nav-link d-inline">احجز رحلتك</a>
+            </div>
+            <a href="#booking-target" class="btn btn-reserve-top">احجز الآن</a>
+        </div>
+    </div>
+</nav>
+
+<section class="hero-section text-center">
+    <div class="container">
+        <h1>اكتشف العالم مع <span>الجولان تور</span></h1>
+        <p class="lead fw-bold text-white">أفضل عروض السفر، حجز الطيران، والفنادق بأسعار تنافسية</p>
+        <div class="search-box-container">
+            <span class="ms-2 fw-bold text-dark">وجهة السفر</span>
+            <input type="text" class="search-input" placeholder="إلى أين تريد الذهاب؟">
+            <button class="btn-search">بحث</button>
+        </div>
+    </div>
+</section>
+
+<div class="services-bar">
+    <div class="container">
+        <div class="row text-center g-3">
+            <div class="col-md col-6"><a href="#" class="service-item"><i class="fas fa-hotel"></i> فنادق عالمية</a></div>
+            <div class="col-md col-6"><a href="#" class="service-item"><i class="fas fa-plane"></i> طيران مباشر</a></div>
+            <div class="col-md col-6"><a href="#" class="service-item"><i class="fas fa-bus"></i> نقل سياحي</a></div>
+            <div class="col-md col-6"><a href="#" class="service-item"><i class="fas fa-passport"></i> تأشيرات سفر</a></div>
+            <div class="col-md col-6"><a href="#" class="service-item"><i class="fas fa-map-marked-alt"></i> جولات سياحية</a></div>
+        </div>
+    </div>
+</div>
+
+<section class="py-5" id="popular">
+    <div class="container">
+        <div class="section-header-box">
+            <div class="text-end">
+                <h2 class="fw-800">الوجهات الشائعة</h2>
+                <p class="text-muted">اكتشف أجمل الوجهات السياحية مع شركة الجولان</p>
+            </div>
+            <div class="slider-controls">
+                <div class="control-btn"><i class="fas fa-chevron-right"></i></div>
+                <div class="control-btn"><i class="fas fa-chevron-left"></i></div>
+            </div>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="destination-card">
+                    <div class="card-img-wrapper"><img src="https://images.unsplash.com/photo-1598007324424-69932147bb9f?w=600" alt="الإسكندرية"><div class="rating-badge">4.5 ⭐</div></div>
+                    <div class="card-footer-box"><h5>الإسكندرية</h5><small class="text-muted"><i class="fas fa-map-marker-alt"></i> مصر</small></div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="destination-card">
+                    <div class="card-img-wrapper"><img src="https://images.unsplash.com/photo-1598418015509-f38b255b5722?w=600" alt="القاهرة"><div class="rating-badge">4.6 ⭐</div></div>
+                    <div class="card-footer-box"><h5>القاهرة</h5><small class="text-muted"><i class="fas fa-map-marker-alt"></i> مصر</small></div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="destination-card">
+                    <div class="card-img-wrapper"><img src="https://images.unsplash.com/photo-1603503126848-1b203a95d527?w=600" alt="تونس"><div class="rating-badge">4.7 ⭐</div></div>
+                    <div class="card-footer-box"><h5>تونس</h5><small class="text-muted"><i class="fas fa-map-marker-alt"></i> تونس</small></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="about-golan" id="about">
+    <div class="container">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-6">
+                <h2 class="fw-800 mb-4">تعرّف على <br> <span style="color: var(--gold-primary);">شركة الجولان تور</span></h2>
+                <p class="text-muted">شركة الجولان تور للخدمات السياحية هي شركة ليبية معتمدة متخصصة في تقديم حلول السفر والسياحة المتكاملة للأفراد والشركات والمؤسسات.</p>
+                <div class="row g-3 mt-4 text-center">
+                    <div class="col-3 border-start"><h3>500+</h3><p class="small">رحلة ناجحة</p></div>
+                    <div class="col-3 border-start"><h3>200+</h3><p class="small">عميل سعيد</p></div>
+                    <div class="col-3 border-start"><h3>15+</h3><p class="small">وجهة سياحية</p></div>
+                    <div class="col-3"><h3>8+</h3><p class="small">شريك طيران</p></div>
+                </div>
+            </div>
+            <div class="col-lg-6 about-img-wrapper">
+                <img src="https://images.unsplash.com/photo-1506012787146-f92b2d7d6d96?w=800" alt="سفر">
+                <div class="discount-badge"><h5>خصم 20%</h5><p class="mb-0 small">على الحجوزات المبكرة</p></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="partners-section">
+    <div class="container">
+        <div class="partner-badge"><i class="fas fa-check-circle ms-1"></i> شركاء معتمدون رسمياً</div>
+        <h2 class="fw-800 mb-2">شركاؤنا المعتمدون</h2>
+        <p class="text-muted mb-5">نفخر بشراكات استراتيجية مع كبرى شركات الطيران العاملة في ليبيا والمنطقة</p>
+        
+        <div class="row g-4 justify-content-center">
+            <div class="col-lg-3 col-md-4 col-6">
+                <div class="partner-card">
+                    <img src="https://via.placeholder.com/60" alt="الخطوط الجوية الليبية" class="partner-logo">
+                    <h6 class="fw-bold mb-2">الخطوط الجوية الليبية</h6>
+                    <span class="agent-status status-red">وكيل معتمد</span>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-6">
+                <div class="partner-card">
+                    <img src="https://via.placeholder.com/60" alt="البراق للطيران" class="partner-logo">
+                    <h6 class="fw-bold mb-2">البراق للطيران</h6>
+                    <span class="agent-status status-purple">وكيل معتمد</span>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-6">
+                <div class="partner-card">
+                    <img src="https://via.placeholder.com/60" alt="أويا للطيران" class="partner-logo">
+                    <h6 class="fw-bold mb-2">أويا للطيران</h6>
+                    <span class="agent-status status-green">وكيل معتمد</span>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-6">
+                <div class="partner-card">
+                    <img src="https://via.placeholder.com/60" alt="سما المتوسط" class="partner-logo">
+                    <h6 class="fw-bold mb-2">سما المتوسط</h6>
+                    <span class="agent-status status-purple">وكيل معتمد</span>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-6">
+                <div class="partner-card">
+                    <img src="https://via.placeholder.com/60" alt="الأجنحة الليبية" class="partner-logo">
+                    <h6 class="fw-bold mb-2">الأجنحة الليبية</h6>
+                    <span class="agent-status status-green">وكيل معتمد</span>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-6">
+                <div class="partner-card">
+                    <img src="https://via.placeholder.com/60" alt="برنيق للطيران" class="partner-logo">
+                    <h6 class="fw-bold mb-2">البرنيق للطيران</h6>
+                    <span class="agent-status status-green">وكيل معتمد</span>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-6">
+                <div class="partner-card">
+                    <img src="https://via.placeholder.com/60" alt="التركية" class="partner-logo">
+                    <h6 class="fw-bold mb-2">الخطوط الجوية التركية</h6>
+                    <span class="agent-status status-purple">وكيل معتمد</span>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-6">
+                <div class="partner-card">
+                    <img src="https://via.placeholder.com/60" alt="الأفريقية" class="partner-logo">
+                    <h6 class="fw-bold mb-2">الخطوط الجوية الأفريقية</h6>
+                    <span class="agent-status status-green">وكيل معتمد</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="booking-section" id="booking-target">
+    <div class="container">
+        <div class="booking-card">
+            <div class="booking-info">
+                <h2 class="fw-bold mb-4">احجز رحلتك <br> إلى أي مكان في العالم</h2>
+                <div class="mb-4"><i class="fas fa-bolt text-gold"></i> <strong>رد سريع</strong><p class="small">فريقنا معك دائماً</p></div>
+                <div class="mb-4"><i class="fas fa-shield-alt text-gold"></i> <strong>أفضل الأسعار</strong><p class="small">عروض تنافسية حصرية</p></div>
+            </div>
+            <div class="booking-form">
+                <h4 class="fw-bold mb-4">تفاصيل الحجز</h4>
+                <div class="row g-3">
+                    <div class="col-md-6"><label class="form-label">الاسم الكامل</label><input type="text" class="form-control" placeholder="مثال: محمد علي"></div>
+                    <div class="col-md-6"><label class="form-label">رقم الهاتف</label><input type="text" class="form-control" placeholder="09xxxxxxxx"></div>
+                    <div class="col-md-6"><label class="form-label">الوجهة</label><input type="text" class="form-control" placeholder="إلى أين؟"></div>
+                    <div class="col-md-6"><label class="form-label">تاريخ السفر</label><input type="date" class="form-control"></div>
+                    <button class="btn btn-whatsapp"><i class="fab fa-whatsapp ms-2"></i> إرسال عبر واتساب</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<footer class="bg-dark text-white text-center py-4">
+    <p class="mb-0">جميع الحقوق محفوظة &copy; 2026 شركة الجولان تور للسياحة والسفر</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
